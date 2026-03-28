@@ -32,6 +32,20 @@ const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Añadir control de escala
 L.control.scale().addTo(map);
 
+// Añadir mapa de referencia (mini mapa)
+const miniMapTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+});
+
+const miniMap = new L.Control.MiniMap(miniMapTiles, {
+    toggleDisplay: true,
+    minimized: false,
+    position: 'bottomleft',
+    width: 150,
+    height: 150,
+    zoomLevelOffset: -5
+}).addTo(map);
+
 // Variables para las capas GeoJSON
 let capaGeoJSON;
 let capaGeoJSONMpios;
